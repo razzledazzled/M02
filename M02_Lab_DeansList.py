@@ -5,7 +5,6 @@
 lastNameInputText = ("Please enter the last name of student {}: ")
 firstNameInputText = ("Please enter the first name of student {}: ")
 counter = 1
-gpa = 0.00
 studentList = []
 gpaList = []
 
@@ -17,7 +16,7 @@ while lastName != "ZZZ":
     firstName = (input(firstNameInputText.format(counter)))
     fullName = (firstName.strip()).capitalize() + " " + (lastName.strip()).capitalize()
     
-    gpa = int((input("What is {}'s GPA?: ".format(fullName))(fullName)))
+    gpa = int((input("What is {}'s GPA?: ".format(fullName))))
 
     lastName = (input(lastNameInputText.format(counter + 1)))
 
