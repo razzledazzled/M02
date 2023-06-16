@@ -16,6 +16,9 @@ print()
 lastName = (input(lastNameInputText.format(counter)))
 
 while lastName != "ZZZ":
+    #Inializes repeate variables
+    isGpaFlag = False
+
     #Asks user for student first name
     firstName = (input(firstNameInputText.format(counter)))
 
@@ -27,10 +30,16 @@ while lastName != "ZZZ":
     studentList.append(fullName)
 
     #Asks user for student's gpa
-    gpa = float((input("What is {}'s GPA?: ".format(fullName))))
+    sGpa = input("What is {}'s GPA?: ".format(fullName))
+
+    try:
+        fGpa = float(sGpa)  # Convert input GPA to float
+    except ValueError:
+        print("Invalid GPA entered. Please enter a valid numeric value.")
+        continue  # Skip the rest of the loop and start from the beginning
 
     #Adds gpa to list
-    gpaList.append(gpa)
+    gpaList.append(fGpa)
 
     lastName = (input(lastNameInputText.format(counter + 1)))
 
