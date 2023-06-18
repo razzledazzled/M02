@@ -1,6 +1,14 @@
 ##  Name: Anthony Harris
 ##  File Name: M02_Lab_DeansList.py
-##  This program asks XXX
+##  This program asks the user for a student's last name.
+##  If the name is ZZZ, then the program prints all recorded and quits.
+##  Progam will ask for last name, then first, then combines both names.
+##  The program will elimnate white space and capitalize names
+##  The program then asks for a gpa, if gpa is not on 4.0 scale (0.0-4.0)
+##  then the program will loop until the user enters the correct data.
+##  The program then checks to see if the a valid gpa is eligable for 
+##  Dean's List (3.5) or Honor Roll (3.25).
+##  Program loops until ZZZ is entered.
 
 ##  Variables
 lastNameInputText = ("Please enter the last name of student {} or type \"ZZZ\" to quit: ")
@@ -35,13 +43,21 @@ while lastName != "ZZZ":
 
         try:
             fGpa = float(sGpa)  # Convert input GPA to float
-            break  # Exit the inner loop if a valid GPA is entered
+            if (fGpa > 4.0 or fGpa < 0.0): #If gpa not on scale, repeate loop
+                print("Invalid GPA entered. Please enter a GPA within the 4.0 scale.")
+            else:
+                break  # Exit the inner loop if a valid GPA is entered
         except ValueError:
             print("Invalid GPA entered. Please enter a valid numeric value.")
             continue  # Skip the rest of the loop and start from the beginning
 
     #Adds gpa to list
     gpaList.append(fGpa)
+
+    if fGpa >= 3.5: #If gpa is greater than or equal to 3.5
+        print("Congrats! {} made the Dean's List with a {} GPA!".format(fullName, sGpa))
+    elif fGpa >= 3.25: #If gpa is greater than or equal to 3.25
+        print("Awesome! {} made the Honor Roll with a GPA of {}!".format(fullName,sGpa))
 
     #Ask user for last name again, checking for "quit" value
     lastName = (input(lastNameInputText.format(counter + 1)))
