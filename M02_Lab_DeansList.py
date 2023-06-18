@@ -30,17 +30,20 @@ while lastName != "ZZZ":
     studentList.append(fullName)
 
     #Asks user for student's gpa
-    sGpa = input("What is {}'s GPA?: ".format(fullName))
+    while True:
+        sGpa = input("What is {}'s GPA?: ".format(fullName))
 
-    try:
-        fGpa = float(sGpa)  # Convert input GPA to float
-    except ValueError:
-        print("Invalid GPA entered. Please enter a valid numeric value.")
-        continue  # Skip the rest of the loop and start from the beginning
+        try:
+            fGpa = float(sGpa)  # Convert input GPA to float
+            break  # Exit the inner loop if a valid GPA is entered
+        except ValueError:
+            print("Invalid GPA entered. Please enter a valid numeric value.")
+            continue  # Skip the rest of the loop and start from the beginning
 
     #Adds gpa to list
     gpaList.append(fGpa)
 
+    #Ask user for last name again, checking for "quit" value
     lastName = (input(lastNameInputText.format(counter + 1)))
 
 #Prints both lists
